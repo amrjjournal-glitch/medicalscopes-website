@@ -1,0 +1,72 @@
+/* ============================================================
+   ADDITIONS v1.1 — Skip-link · Back-to-top · Forms · Print · A11y
+   ============================================================ */
+
+/* Skip Link (إتاحة) */
+.skip-link{
+  position:absolute;top:-120px;inset-inline-start:14px;
+  background:var(--primary-dark);color:#fff;padding:.75rem 1.3rem;
+  border-radius:0 0 12px 12px;font-weight:700;font-size:.9rem;
+  z-index:9999;transition:top .25s ease;
+}
+.skip-link:focus{top:0;outline:3px solid var(--accent-bright);outline-offset:2px}
+
+/* Back to top */
+.to-top{
+  position:fixed;bottom:26px;inset-inline-end:26px;width:50px;height:50px;
+  border-radius:50%;background:var(--primary);color:#fff;border:0;
+  display:grid;place-items:center;cursor:pointer;
+  opacity:0;visibility:hidden;transform:translateY(18px);
+  transition:all .3s ease;z-index:900;box-shadow:var(--shadow-sm);
+}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+.to-top:hover{background:var(--accent);transform:translateY(-4px)}
+.to-top svg{width:22px;height:22px}
+
+/* Focus visible (WCAG) */
+:focus-visible{outline:3px solid var(--accent-bright);outline-offset:3px;border-radius:6px}
+
+/* Form messages */
+.form-msg{
+  display:none;padding:1rem 1.2rem;border-radius:12px;
+  margin-bottom:1.4rem;font-weight:600;font-size:.94rem;line-height:1.6;
+}
+.form-msg.show{display:block;animation:msgIn .35s ease}
+.form-msg.success{background:#e4f5f3;border:1px solid var(--accent);color:var(--accent-dark)}
+.form-msg.error{background:#fdecea;border:1px solid #e74c3c;color:#a52a1e}
+@keyframes msgIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+/* Validation states */
+.ams-form input:not(:placeholder-shown):invalid,
+.ams-form textarea:not(:placeholder-shown):invalid{
+  border-color:#e74c3c;
+  background-image:linear-gradient(90deg,transparent,transparent);
+}
+.ams-form input:not(:placeholder-shown):valid,
+.ams-form textarea:not(:placeholder-shown):valid{
+  border-color:var(--accent);
+}
+.form-note{font-size:.8rem;color:var(--muted);margin-top:.4rem}
+
+/* Thank-you page */
+.thanks-wrap{max-width:620px;margin:0 auto;text-align:center;padding:100px 0}
+.thanks-icon{
+  width:96px;height:96px;border-radius:50%;background:var(--accent-soft);
+  color:var(--accent);display:grid;place-items:center;margin:0 auto 1.6rem;
+  animation:pop .5s ease;
+}
+@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+.thanks-icon svg{width:48px;height:48px}
+.thanks-wrap h1{color:var(--primary-dark);font-size:2rem;margin-bottom:.8rem}
+.thanks-wrap p{color:var(--muted);font-size:1.05rem;margin-bottom:2rem;line-height:1.8}
+
+/* Print */
+@media print{
+  .site-header,.site-footer,.topbar,.notice,.to-top,.mobile-nav,.nav-overlay,
+  .hero-cta,.join-btn,.lang-btn,.hamburger,.skip-link{display:none!important}
+  body{color:#000;background:#fff}
+  a{color:#000;text-decoration:underline}
+  .container{width:100%}
+  .hero{background:#fff;color:#000}
+  .hero h1 span{color:#000}
+}

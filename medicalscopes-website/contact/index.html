@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Medical Scopes</title>
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="%230b4f6c"/><circle cx="22" cy="21" r="9" fill="none" stroke="white" stroke-width="3"/><path d="M22 16.5v9M17.5 21h9" stroke="white" stroke-width="3" stroke-linecap="round"/><path d="M29 28l8 8" stroke="%233fd6c9" stroke-width="4" stroke-linecap="round"/></svg>'>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>try{var l=localStorage.getItem('ms_lang');if(l==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl';}}catch(e){}</script>
+  <script>
+    window.PAGE_I18N = {
+      en: {
+        "meta.title": "Contact Us | Medical Scopes",
+        "page.title": "Get in Touch",
+        "page.sub": "We welcome inquiries from researchers, physicians, and academic institutions worldwide.",
+        "c.email": "Email Address", "c.loc": "Location", "c.msg": "Your Message", "c.send": "Send Message",
+        "c.success": "Thank you for reaching out! Your message has been sent successfully."
+      },
+      ar: {
+        "meta.title": "تواصل معنا | ميديكال سكوبس",
+        "page.title": "تواصل معنا",
+        "page.sub": "نرحب باستفسارات الباحثين والأطباء والمؤسسات الأكاديمية حول العالم.",
+        "c.email": "البريد الإلكتروني", "c.loc": "الموقع", "c.msg": "رسالتك", "c.send": "إرسال الرسالة",
+        "c.success": "شكراً لتواصلك معنا! تم إرسال رسالتك بنجاح."
+      }
+    };
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" style="padding:60px 0"><div class="container text-center"><span class="badge" data-i18n="nav.contact">Contact</span><h1 data-i18n="page.title" style="margin:1rem 0">Get in Touch</h1><p data-i18n="page.sub" style="max-width:650px;margin:0 auto">We welcome inquiries from researchers worldwide.</p></div></section>
+    <section class="container" style="padding:80px 0;max-width:700px">
+      <div style="background:#fff;border:1px solid var(--line);border-radius:20px;padding:3rem;box-shadow:var(--shadow)">
+        <form onsubmit="event.preventDefault(); document.getElementById('cMsg').style.display='block'; this.reset();">
+          <div id="cMsg" style="display:none;background:#e4f5f3;border:1px solid var(--accent);color:var(--accent-dark);padding:1.2rem;border-radius:12px;margin-bottom:2rem;font-weight:600" data-i18n="c.success">Thank you! Your message has been sent.</div>
+          <div style="margin-bottom:1.5rem"><label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)">Full Name</label><input type="text" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit"></div>
+          <div style="margin-bottom:1.5rem"><label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="c.email">Email Address</label><input type="email" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit"></div>
+          <div style="margin-bottom:2rem"><label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="c.msg">Your Message</label><textarea rows="5" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit"></textarea></div>
+          <button type="submit" class="btn btn-accent" style="width:100%;justify-content:center" data-i18n="c.send">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/assets/js/components.js"></script><script src="/assets/js/i18n.js"></script><script src="/assets/js/main.js"></script>
+</body>
+</html>

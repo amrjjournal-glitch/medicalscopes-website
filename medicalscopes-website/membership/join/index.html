@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Us | Medical Scopes</title>
+  <meta name="description" content="Submit your application to join Medical Scopes as a professional or student member.">
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="%230b4f6c"/><circle cx="22" cy="21" r="9" fill="none" stroke="white" stroke-width="3"/><path d="M22 16.5v9M17.5 21h9" stroke="white" stroke-width="3" stroke-linecap="round"/><path d="M29 28l8 8" stroke="%233fd6c9" stroke-width="4" stroke-linecap="round"/></svg>'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>try{var l=localStorage.getItem('ms_lang');if(l==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl';}}catch(e){}</script>
+  <script>
+    window.PAGE_I18N = {
+      en: {
+        "meta.title": "Membership Application | Medical Scopes",
+        "page.title": "Membership Application Form",
+        "page.sub": "Fill out the details below to apply for membership in Medical Scopes.",
+        "f.name": "Full Name",
+        "f.email": "Email Address",
+        "f.tier": "Membership Tier",
+        "f.tier1": "Student / Junior Researcher",
+        "f.tier2": "Professional Member",
+        "f.tier3": "Institutional Partner",
+        "f.inst": "Institution / Affiliation",
+        "f.country": "Country",
+        "f.bio": "Short Bio / Research Interests",
+        "f.submit": "Submit Application",
+        "f.success": "Thank you! Your application has been received successfully. We will review it and contact you via email soon."
+      },
+      ar: {
+        "meta.title": "نموذج طلب العضوية | ميديكال سكوبس",
+        "page.title": "نموذج طلب الانضمام",
+        "page.sub": "املأ البيانات أدناه لتقديم طلب الانضمام لعضوية جمعية ميديكال سكوبس.",
+        "f.name": "الاسم الكامل",
+        "f.email": "البريد الإلكتروني",
+        "f.tier": "فئة العضوية المطلوبة",
+        "f.tier1": "عضوية الطلاب والباحثين الشباب",
+        "f.tier2": "عضوية المتخصصين والباحثين",
+        "f.tier3": "الشريك المؤسسي",
+        "f.inst": "المؤسسة / جهة العمل",
+        "f.country": "الدولة",
+        "f.bio": "نبذة مختصرة / الاهتمامات البحثية",
+        "f.submit": "إرسال طلب الانضمام",
+        "f.success": "شكراً لك! تم استلام طلبك بنجاح. سنقوم بمراجعته والتواصل معك عبر البريد الإلكتروني قريباً."
+      }
+    };
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" style="padding:60px 0">
+      <div class="container" style="text-align:center">
+        <span class="badge" data-i18n="nav.join">Join Us</span>
+        <h1 data-i18n="page.title" style="margin:1rem 0">Membership Application Form</h1>
+        <p data-i18n="page.sub" style="max-width:650px;margin:0 auto">Fill out the details below to apply for membership...</p>
+      </div>
+    </section>
+
+    <section class="container" style="padding:80px 0;max-width:700px">
+      <div style="background:#fff;border:1px solid var(--line);border-radius:20px;padding:3rem;box-shadow:var(--shadow)">
+        <form id="joinForm" onsubmit="event.preventDefault(); document.getElementById('successMsg').style.display='block'; this.reset();">
+          
+          <div id="successMsg" style="display:none;background:#e4f5f3;border:1px solid var(--accent);color:var(--accent-dark);padding:1.2rem;border-radius:12px;margin-bottom:2rem;font-weight:600" data-i18n="f.success">
+            Thank you! Your application has been received successfully...
+          </div>
+
+          <div style="margin-bottom:1.5rem">
+            <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.name">Full Name</label>
+            <input type="text" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem">
+          </div>
+
+          <div style="margin-bottom:1.5rem">
+            <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.email">Email Address</label>
+            <input type="email" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem">
+          </div>
+
+          <div style="margin-bottom:1.5rem">
+            <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.tier">Membership Tier</label>
+            <select style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem;background:#fff">
+              <option data-i18n="f.tier2">Professional Member</option>
+              <option data-i18n="f.tier1">Student / Junior Researcher</option>
+              <option data-i18n="f.tier3">Institutional Partner</option>
+            </select>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem">
+            <div>
+              <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.inst">Institution / Affiliation</label>
+              <input type="text" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem">
+            </div>
+            <div>
+              <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.country">Country</label>
+              <input type="text" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem">
+            </div>
+          </div>
+
+          <div style="margin-bottom:2rem">
+            <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.bio">Short Bio / Research Interests</label>
+            <textarea rows="4" style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-accent" style="width:100%;justify-content:center" data-i18n="f.submit">Submit Application</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/assets/js/components.js"></script>
+  <script src="/assets/js/i18n.js"></script>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
