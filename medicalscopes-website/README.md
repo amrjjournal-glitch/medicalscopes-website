@@ -1,6 +1,6 @@
-# Medical Scopes Website (medicalscopes.org)
+# Association of Medical Scopes Website (medicalscopes.org)
 
-Official website of **Medical Scopes**, an international U.S.-registered nonprofit scientific association advancing medical research, education, and professional collaboration.
+Official website of the **Association of Medical Scopes**, an international U.S.-registered nonprofit scientific association advancing medical research, education, and professional collaboration.
 
 > 📅 **Launch roadmap**: Site established late 2026 · First scientific activities & International Conference scheduled for **early 2027**.
 
@@ -37,7 +37,7 @@ Official website of **Medical Scopes**, an international U.S.-registered nonprof
 | Delaware Annual Report | March 1 | ~$25 |
 | Registered Agent Renewal (HBS) | Annually | ~$50 |
 | IRS Form 990-N | May 15 | Free |
-| Domain Renewal | Annually | ~$12 |
+| Domain Renewal | Annually | ~$120 |
 
 ## Deployment
 
