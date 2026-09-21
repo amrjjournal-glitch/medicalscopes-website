@@ -1,16 +1,15 @@
 /* ============================================================
-   Medical Scopes — i18n.js (Bilingual Translation System)
-   v1.1 — Fixed: syntax error in form.success (missing comma)
-          Updated: founded year 2026, conference year 2027
+   Association of Medical Scopes — i18n.js (Bilingual Translation System)
+   v1.2 — Updated: Official name "Association of Medical Scopes"
    ============================================================ */
 window.I18N = (function () {
   "use strict";
 
   const DICT = {
     en: {
-      "meta.title": "Medical Scopes | Advancing Medical Science & Collaboration",
-      "meta.desc": "Medical Scopes is a U.S.-registered nonprofit scientific association advancing medical research, education, conferences and publishing.",
-      "site.name": "Medical Scopes",
+      "meta.title": "Association of Medical Scopes | Advancing Medical Science & Collaboration",
+      "meta.desc": "Association of Medical Scopes is a U.S.-registered nonprofit scientific association advancing medical research, education, conferences and publishing.",
+      "site.name": "Association of Medical Scopes",
       "site.tag": "Scientific Association",
       "top.location": "United States",
       "top.tag": "A Nonprofit Scientific Association",
@@ -49,8 +48,8 @@ window.I18N = (function () {
       "footer.terms": "Terms of Use",
       "footer.disclosures": "Legal Disclosures",
       "footer.contact": "Contact Us",
-      "footer.rights": "© Medical Scopes. All rights reserved.",
-      "footer.nonprofit": "Medical Scopes is a nonprofit organization registered in the United States. Application for 501(c)(3) tax-exempt status is in progress.",
+      "footer.rights": "© Association of Medical Scopes. All rights reserved.",
+      "footer.nonprofit": "Association of Medical Scopes is a nonprofit organization registered in the United States. Application for 501(c)(3) tax-exempt status is in progress.",
 
       "hero.eyebrow": "U.S.-Based Nonprofit Scientific Association",
       "hero.title": "Broadening the Horizons of <span>Medical Science</span>",
@@ -70,7 +69,7 @@ window.I18N = (function () {
 
       "about.eyebrow": "Who We Are",
       "about.title": "A New Chapter in Medical Collaboration",
-      "about.p1": "Medical Scopes is a newly established nonprofit scientific association, registered in the United States, founded by a group of physicians and researchers who share one belief: medical knowledge grows when it is shared.",
+      "about.p1": "Association of Medical Scopes is a newly established nonprofit scientific association, registered in the United States, founded by a group of physicians and researchers who share one belief: medical knowledge grows when it is shared.",
       "about.p2": "We are building a platform that supports researchers, empowers young professionals, and connects the medical community through research, conferences, training, and publication.",
       "about.link": "Learn More About Us →",
       "about.c1": "Research",
@@ -120,9 +119,9 @@ window.I18N = (function () {
     },
 
     ar: {
-      "meta.title": "ميديكال سكوبس | للارتقاء بالعلوم الطبية والتعاون",
-      "meta.desc": "ميديكال سكوبس جمعية علمية غير ربحية مسجلة في الولايات المتحدة تدعم البحث الطبي والتعليم والمؤتمرات والنشر العلمي.",
-      "site.name": "ميديكال سكوبس",
+      "meta.title": "جمعية ميديكال سكوبس | للارتقاء بالعلوم الطبية والتعاون",
+      "meta.desc": "جمعية ميديكال سكوبس جمعية علمية غير ربحية مسجلة في الولايات المتحدة تدعم البحث الطبي والتعليم والمؤتمرات والنشر العلمي.",
+      "site.name": "جمعية ميديكال سكوبس",
       "site.tag": "جمعية علمية",
       "top.location": "الولايات المتحدة الأمريكية",
       "top.tag": "جمعية علمية غير ربحية",
@@ -161,8 +160,8 @@ window.I18N = (function () {
       "footer.terms": "شروط الاستخدام",
       "footer.disclosures": "الإفصاحات القانونية",
       "footer.contact": "تواصل معنا",
-      "footer.rights": "© ميديكال سكوبس. جميع الحقوق محفوظة.",
-      "footer.nonprofit": "ميديكال سكوبس منظمة غير ربحية مسجلة في الولايات المتحدة الأمريكية، وطلب الإعفاء الضريبي 501(c)(3) قيد التقدم.",
+      "footer.rights": "© جمعية ميديكال سكوبس. جميع الحقوق محفوظة.",
+      "footer.nonprofit": "جمعية ميديكال سكوبس منظمة غير ربحية مسجلة في الولايات المتحدة الأمريكية، وطلب الإعفاء الضريبي 501(c)(3) قيد التقدم.",
 
       "hero.eyebrow": "جمعية علمية غير ربحية — الولايات المتحدة",
       "hero.title": "نوسّع آفاق <span>العلوم الطبية</span>",
@@ -182,7 +181,7 @@ window.I18N = (function () {
 
       "about.eyebrow": "من نحن",
       "about.title": "فصل جديد في التعاون الطبي",
-      "about.p1": "ميديكال سكوبس جمعية علمية غير ربحية حديثة التأسيس، مسجلة في الولايات المتحدة الأمريكية، أسسها نخبة من الأطباء والباحثين يجمعهم إيمان واحد: المعرفة الطبية تنمو حين تُشارَك.",
+      "about.p1": "جمعية ميديكال سكوبس جمعية علمية غير ربحية حديثة التأسيس، مسجلة في الولايات المتحدة الأمريكية، أسسها نخبة من الأطباء والباحثين يجمعهم إيمان واحد: المعرفة الطبية تنمو حين تُشارَك.",
       "about.p2": "نبني منصة تدعم الباحثين، وتمكّن الكوادر الشابة، وتربط المجتمع الطبي عبر الأبحاث والمؤتمرات والتدريب والنشر العلمي.",
       "about.link": "اعرف المزيد عنا ←",
       "about.c1": "الأبحاث",
