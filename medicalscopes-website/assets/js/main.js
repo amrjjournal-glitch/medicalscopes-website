@@ -1,5 +1,5 @@
 /* ============================================================
-   Medical Scopes — main.js (UI Interactivity & Animations)
+   Association of Medical Scopes — main.js (UI Interactivity & Animations)
    ============================================================ */
 (function () {
   "use strict";
