@@ -1,19 +1,17 @@
 /* ============================================================
-   Medical Scopes — components.js (Shared Header, Footer, A11y)
+   Association of Medical Scopes — components.js
+   (Shared Header, Footer, A11y)
    ============================================================ */
 (function () {
   "use strict";
 
-  const LOGO_SVG = `
-  <svg class="brand-logo" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-    <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#17a398"/><stop offset="1" stop-color="#0b4f6c"/>
-    </linearGradient></defs>
-    <rect width="48" height="48" rx="13" fill="url(#lg)"/>
-    <circle cx="22" cy="21" r="9.5" stroke="#fff" stroke-width="3"/>
-    <path d="M22 16v10M17 21h10" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-    <path d="M29.5 28.5 37 36" stroke="#3fd6c9" stroke-width="4" stroke-linecap="round"/>
-  </svg>`;
+  // ---- Official Logo (رابط مباشر من GitHub) ----
+  const LOGO_URL = "https://raw.githubusercontent.com/amrjjournal-glitch/medicalscopes-website/main/medicalscopes-website/logo%20(2).png";
+
+  const LOGO_IMG = `
+  <img src="${LOGO_URL}" alt="Association of Medical Scopes Logo"
+       class="brand-logo" width="44" height="44" loading="lazy"
+       style="object-fit:contain;border-radius:10px;">`;
 
   const HEADER_HTML = `
   <div class="topbar">
@@ -27,9 +25,12 @@
   </div>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="/" class="brand" aria-label="Medical Scopes Home">
-        ${LOGO_SVG}
-        <span class="brand-name"><span data-i18n="site.name">Medical Scopes</span><small data-i18n="site.tag">Scientific Association</small></span>
+      <a href="/" class="brand" aria-label="Association of Medical Scopes Home">
+        ${LOGO_IMG}
+        <span class="brand-name">
+          <span data-i18n="site.name">Association of Medical Scopes</span>
+          <small data-i18n="site.tag">Scientific Association</small>
+        </span>
       </a>
       <nav aria-label="Main">
         <ul class="nav">
@@ -101,9 +102,12 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <a href="/" class="brand footer-brand" aria-label="Medical Scopes">
-          ${LOGO_SVG}
-          <span class="brand-name"><span data-i18n="site.name">Medical Scopes</span><small data-i18n="site.tag">Scientific Association</small></span>
+        <a href="/" class="brand footer-brand" aria-label="Association of Medical Scopes">
+          ${LOGO_IMG}
+          <span class="brand-name">
+            <span data-i18n="site.name">Association of Medical Scopes</span>
+            <small data-i18n="site.tag">Scientific Association</small>
+          </span>
         </a>
         <p data-i18n="footer.about">A U.S.-registered nonprofit scientific association dedicated to advancing medical research, education, and professional collaboration worldwide.</p>
       </div>
@@ -146,8 +150,8 @@
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p><span data-i18n="footer.rights">© Medical Scopes. All rights reserved.</span> <span data-year>2026</span></p>
-        <p class="footer-nonprofit" data-i18n="footer.nonprofit">Medical Scopes is a nonprofit organization registered in the United States. Application for 501(c)(3) tax-exempt status is in progress.</p>
+        <p><span data-i18n="footer.rights">© Association of Medical Scopes. All rights reserved.</span> <span data-year>2026</span></p>
+        <p class="footer-nonprofit" data-i18n="footer.nonprofit">Association of Medical Scopes is a nonprofit organization registered in the United States. Application for 501(c)(3) tax-exempt status is in progress.</p>
       </div>
     </div>
   </footer>`;
@@ -164,7 +168,6 @@
   }
 
   function injectAccessibility() {
-    // Skip link
     if (!document.querySelector(".skip-link")) {
       const main = document.querySelector("main");
       if (main && !main.id) main.id = "main-content";
@@ -175,7 +178,6 @@
       a.textContent = "Skip to main content";
       document.body.insertBefore(a, document.body.firstChild);
     }
-    // Back to top
     if (!document.querySelector(".to-top")) {
       const btn = document.createElement("button");
       btn.className = "to-top";
