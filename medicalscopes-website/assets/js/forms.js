@@ -1,5 +1,5 @@
 /* ============================================================
-   Medical Scopes — forms.js
+   Association of Medical Scopes — forms.js
    Centralized form handler: Formspree + mailto fallback.
    ✏️ To enable Formspree: create a form at formspree.io
       and paste your endpoint below (e.g. "https://formspree.io/f/abcdwxyz").
