@@ -15,11 +15,13 @@
     en: {
       sending: "Sending…",
       success: "Thank you! Your message has been sent successfully.",
+      mailto: "Your email app is opening with the completed message. Please send it to finish.",
       error: "Something went wrong. Please try again or email us directly at " + CONTACT_EMAIL + "."
     },
     ar: {
       sending: "جارٍ الإرسال…",
       success: "شكراً لك! تم إرسال رسالتك بنجاح.",
+      mailto: "سيتم فتح تطبيق البريد الإلكتروني بالرسالة الجاهزة. اضغط إرسال لإكمال الطلب.",
       error: "حدث خطأ ما. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على " + CONTACT_EMAIL + "."
     }
   };
@@ -65,9 +67,11 @@
       let body = "";
       data.forEach((v, k) => { body += k + ": " + v + "\n"; });
       const subject = encodeURIComponent("[AMS] " + (data.get("subject") || form.dataset.subject || "New submission"));
-      window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + encodeURIComponent(body);
-      showMsg(form, "success", M.success);
-      setTimeout(() => form.reset(), 400);
+      showMsg(form, "success", M.mailto);
+      window.setTimeout(() => {
+        window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + encodeURIComponent(body);
+      }, 120);
+      setTimeout(() => form.reset(), 700);
       if (btn) { btn.disabled = false; btn.textContent = originalText; }
     }
   }

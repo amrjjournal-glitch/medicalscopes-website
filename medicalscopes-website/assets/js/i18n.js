@@ -262,6 +262,18 @@ window.I18N = (function () {
     if (t["meta.title"]) document.title = t["meta.title"];
     const md = document.querySelector('meta[name="description"]');
     if (md && t["meta.desc"]) md.setAttribute("content", t["meta.desc"]);
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogTitle && t["meta.title"]) ogTitle.setAttribute("content", t["meta.title"]);
+    if (ogDesc && t["meta.desc"]) ogDesc.setAttribute("content", t["meta.desc"]);
+
+    // Pages without a hand-authored canonical still get a stable absolute URL.
+    if (!document.querySelector('link[rel="canonical"]')) {
+      const canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      canonical.href = window.location.origin + window.location.pathname;
+      document.head.appendChild(canonical);
+    }
   }
 
   function setLang(l) {

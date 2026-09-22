@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join Us | Association of Medical Scopes</title>
   <meta name="description" content="Submit your application to join the Association of Medical Scopes as a professional or student member.">
+  <link rel="canonical" href="https://medicalscopes.org/membership/join/">
   <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="%230b4f6c"/><circle cx="22" cy="21" r="9" fill="none" stroke="white" stroke-width="3"/><path d="M22 16.5v9M17.5 21h9" stroke="white" stroke-width="3" stroke-linecap="round"/><path d="M29 28l8 8" stroke="%233fd6c9" stroke-width="4" stroke-linecap="round"/></svg>'>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,7 +62,7 @@
 
     <section class="container" style="padding:80px 0;max-width:700px">
       <div style="background:#fff;border:1px solid var(--line);border-radius:20px;padding:3rem;box-shadow:var(--shadow)">
-        <form id="joinForm" onsubmit="event.preventDefault(); document.getElementById('successMsg').style.display='block'; this.reset();">
+        <form id="joinForm" class="ams-form" data-subject="Membership application">
           
           <div id="successMsg" style="display:none;background:#e4f5f3;border:1px solid var(--accent);color:var(--accent-dark);padding:1.2rem;border-radius:12px;margin-bottom:2rem;font-weight:600" data-i18n="f.success">
             Thank you! Your application has been received successfully...
@@ -69,17 +70,17 @@
 
           <div style="margin-bottom:1.5rem">
             <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.name">Full Name</label>
-            <input type="text" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem">
+            <input type="text" name="name" autocomplete="name" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem">
           </div>
 
           <div style="margin-bottom:1.5rem">
             <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.email">Email Address</label>
-            <input type="email" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem">
+            <input type="email" name="email" autocomplete="email" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem">
           </div>
 
           <div style="margin-bottom:1.5rem">
             <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.tier">Membership Tier</label>
-            <select style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem;background:#fff">
+            <select name="membership_tier" style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem;background:#fff">
               <option data-i18n="f.tier2">Professional Member</option>
               <option data-i18n="f.tier1">Student / Junior Researcher</option>
               <option data-i18n="f.tier3">Institutional Partner</option>
@@ -89,17 +90,17 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem">
             <div>
               <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.inst">Institution / Affiliation</label>
-              <input type="text" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem">
+              <input type="text" name="institution" autocomplete="organization" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem">
             </div>
             <div>
               <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.country">Country</label>
-              <input type="text" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem">
+              <input type="text" name="country" autocomplete="country-name" required style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem">
             </div>
           </div>
 
           <div style="margin-bottom:2rem">
             <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.bio">Short Bio / Research Interests</label>
-            <textarea rows="4" style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem"></textarea>
+            <textarea name="bio" rows="4" style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem"></textarea>
           </div>
 
           <button type="submit" class="btn btn-accent" style="width:100%;justify-content:center" data-i18n="f.submit">Submit Application</button>
@@ -110,6 +111,7 @@
   <div id="site-footer"></div>
   <script src="/assets/js/components.js"></script>
   <script src="/assets/js/i18n.js"></script>
+  <script src="/assets/js/forms.js"></script>
   <script src="/assets/js/main.js"></script>
 </body>
 </html>

@@ -22,7 +22,11 @@
 
     function closeMenu() {
       if (drawer) drawer.classList.remove("open");
-      if (burger) { burger.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); }
+      if (burger) {
+        burger.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
+        burger.setAttribute("aria-label", "Open menu");
+      }
       if (overlay) overlay.classList.remove("show");
       document.body.classList.remove("no-scroll");
     }
@@ -35,6 +39,7 @@
           burger.classList.add("open");
           if (overlay) overlay.classList.add("show");
           burger.setAttribute("aria-expanded", "true");
+          burger.setAttribute("aria-label", "Close menu");
           document.body.classList.add("no-scroll");
         } else closeMenu();
       });

@@ -5,13 +5,13 @@
 (function () {
   "use strict";
 
-  // ---- Official Logo (رابط مباشر من GitHub) ----
-  const LOGO_URL = "https://raw.githubusercontent.com/amrjjournal-glitch/medicalscopes-website/main/medicalscopes-website/logo%20(2).png";
+  // Keep the brand asset local so the header remains reliable on GitHub Pages,
+  // during offline previews, and when the repository is mirrored.
+  const LOGO_URL = "/logo%20(2).png";
 
   const LOGO_IMG = `
-  <img src="${LOGO_URL}" alt="Association of Medical Scopes Logo"
-       class="brand-logo" width="44" height="44" loading="lazy"
-       style="object-fit:contain;border-radius:10px;">`;
+  <img src="${LOGO_URL}" alt="Association of Medical Scopes logo"
+       class="brand-logo" width="44" height="44" decoding="async">`;
 
   const HEADER_HTML = `
   <div class="topbar">
@@ -60,9 +60,9 @@
         </ul>
       </nav>
       <div class="header-actions">
-        <button class="lang-btn" data-lang-btn aria-label="Toggle language">عربي</button>
+        <button class="lang-btn" type="button" data-lang-btn aria-label="Toggle language">عربي</button>
         <a href="/membership/join/" class="join-btn" data-i18n="nav.join">Join Us</a>
-        <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav">
+        <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -73,7 +73,7 @@
     <ul class="m-nav">
       <li><a href="/" data-i18n="nav.home">Home</a></li>
       <li class="m-group">
-        <button class="m-toggle" aria-expanded="false"><span data-i18n="nav.about">About Us</span> <span class="caret" aria-hidden="true">▾</span></button>
+        <button class="m-toggle" type="button" aria-expanded="false"><span data-i18n="nav.about">About Us</span> <span class="caret" aria-hidden="true">▾</span></button>
         <ul class="m-sub">
           <li><a href="/about/" data-i18n="nav.aboutUs">Who We Are</a></li>
           <li><a href="/about/mission/" data-i18n="nav.mission">Mission & Vision</a></li>
@@ -86,7 +86,7 @@
       <li><a href="/activities/" data-i18n="nav.activities">Activities</a></li>
       <li><a href="/events/" data-i18n="nav.events">Events</a></li>
       <li class="m-group">
-        <button class="m-toggle" aria-expanded="false"><span data-i18n="nav.media">Media Center</span> <span class="caret" aria-hidden="true">▾</span></button>
+        <button class="m-toggle" type="button" aria-expanded="false"><span data-i18n="nav.media">Media Center</span> <span class="caret" aria-hidden="true">▾</span></button>
         <ul class="m-sub">
           <li><a href="/media/news/" data-i18n="nav.news">News & Press</a></li>
           <li><a href="/media/gallery/" data-i18n="nav.gallery">Gallery</a></li>
