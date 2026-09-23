@@ -1,8 +1,12 @@
 /* ============================================================
    Association of Medical Scopes — main.js (UI Interactivity & Animations)
+   v1.1 — Translated aria-labels for the mobile menu
    ============================================================ */
 (function () {
   "use strict";
+
+  // ترجمة فورية من نظام i18n مع بديل إنجليزي آمن
+  const T = k => (window.I18N && I18N.t(k)) || (k === "a11y.menuClose" ? "Close menu" : "Open menu");
 
   let initialized = false;
 
@@ -25,7 +29,7 @@
       if (burger) {
         burger.classList.remove("open");
         burger.setAttribute("aria-expanded", "false");
-        burger.setAttribute("aria-label", "Open menu");
+        burger.setAttribute("aria-label", T("a11y.menuOpen"));
       }
       if (overlay) overlay.classList.remove("show");
       document.body.classList.remove("no-scroll");
@@ -39,7 +43,7 @@
           burger.classList.add("open");
           if (overlay) overlay.classList.add("show");
           burger.setAttribute("aria-expanded", "true");
-          burger.setAttribute("aria-label", "Close menu");
+          burger.setAttribute("aria-label", T("a11y.menuClose"));
           document.body.classList.add("no-scroll");
         } else closeMenu();
       });

@@ -1,7 +1,7 @@
 /* ============================================================
    Association of Medical Scopes — main.css (Complete)
-   Tokens · Base · Layout · Header · Hero · Sections · Footer
-   Forms · RTL · Responsive · Print · A11y
+   v1.1 — conf-badge contrast · form-msg.info · social links
+          · form-check · m-toggle.active
    ============================================================ */
 /* ---------- Tokens ---------- */
 :root{
@@ -184,7 +184,9 @@ html[dir="rtl"] .link-arrow:hover{transform:translateX(-6px)}
   text-decoration:none;
   flex-shrink:0;
 }
-.brand-logo{width:44px;height:44px;flex-shrink:0}
+.brand-logo{width:44px;height:44px;object-fit:contain;flex-shrink:0}
+/* اللوجو الشفاف على الفوتر الغامق يحتاج خلفية فاتحة للوضوح */
+.footer-brand .brand-logo{background:#fff;border-radius:10px;padding:3px}
 .brand-name{
   display:flex;
   flex-direction:column;
@@ -340,6 +342,7 @@ html[dir="rtl"] .mobile-nav{box-shadow:8px 0 40px rgba(0,0,0,.12)}
   text-align:start;
 }
 .m-toggle:hover{background:var(--soft)}
+.m-toggle.active{color:var(--accent)}
 .m-toggle .caret{font-size:.7rem;transition:transform var(--transition)}
 .m-group.open .m-toggle .caret{transform:rotate(180deg)}
 .m-sub{
@@ -580,7 +583,7 @@ body.no-scroll{overflow:hidden}
 .conf-badge{
   display:inline-block;
   background:var(--gold);
-  color:#fff;
+  color:var(--primary-dark);
   font-weight:800;
   font-size:.78rem;
   letter-spacing:.1em;
@@ -691,6 +694,21 @@ body.no-scroll{overflow:hidden}
 .footer-contact svg{width:18px;height:18px;color:var(--accent-bright);flex-shrink:0;margin-top:.25rem}
 .footer-contact a{color:rgba(255,255,255,.75)}
 .footer-contact a:hover{color:var(--accent-bright)}
+
+/* ---------- Social links ---------- */
+.social-links{display:flex;gap:.6rem;margin-top:1.2rem}
+.social-links a{
+  width:38px;height:38px;
+  border-radius:50%;
+  background:rgba(255,255,255,.1);
+  display:grid;
+  place-items:center;
+  color:rgba(255,255,255,.8);
+  transition:all var(--transition);
+}
+.social-links a:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+.social-links svg{width:17px;height:17px;fill:currentColor}
+
 .footer-bottom{
   border-top:1px solid rgba(255,255,255,.1);
   padding:1.6rem 0;
@@ -733,6 +751,26 @@ input:focus,textarea:focus,select:focus{
 }
 textarea{resize:vertical;min-height:120px}
 
+/* ---------- Privacy consent checkbox ---------- */
+.form-check .check-label{
+  display:flex;
+  align-items:flex-start;
+  gap:.6rem;
+  font-size:.88rem;
+  font-weight:500;
+  color:var(--muted);
+  cursor:pointer;
+  line-height:1.6;
+}
+.form-check input[type="checkbox"]{
+  width:18px;height:18px;
+  margin-top:.15rem;
+  accent-color:var(--accent);
+  flex-shrink:0;
+  cursor:pointer;
+}
+.form-check a{color:var(--accent);text-decoration:underline}
+
 /* ---------- Accessibility ---------- */
 .skip-link{
   position:absolute;top:-120px;inset-inline-start:14px;
@@ -763,6 +801,7 @@ textarea{resize:vertical;min-height:120px}
 .form-msg.show{display:block;animation:msgIn .35s ease}
 .form-msg.success{background:#e4f5f3;border:1px solid var(--accent);color:var(--accent-dark)}
 .form-msg.error{background:#fdecea;border:1px solid #e74c3c;color:#a52a1e}
+.form-msg.info{background:var(--soft-2);border:1px solid var(--primary-light);color:var(--primary-dark)}
 @keyframes msgIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 
 .ams-form input:not(:placeholder-shown):invalid,

@@ -1,6 +1,6 @@
 /* ============================================================
    Association of Medical Scopes — i18n.js (Bilingual Translation System)
-   v1.2 — Updated: Official name "Association of Medical Scopes"
+   v1.3 — ?lang= URL param · a11y keys · form.consent · t() export
    ============================================================ */
 window.I18N = (function () {
   "use strict";
@@ -32,6 +32,9 @@ window.I18N = (function () {
       "nav.join": "Join Us",
       "a11y.skip": "Skip to main content",
       "a11y.top": "Back to top",
+      "a11y.lang": "Switch language to Arabic",
+      "a11y.menuOpen": "Open menu",
+      "a11y.menuClose": "Close menu",
       "about.est": "Est. 2026 · USA",
       "bc.home": "Home",
       "form.name": "Full Name",
@@ -40,6 +43,7 @@ window.I18N = (function () {
       "form.message": "Your Message",
       "form.send": "Send Message",
       "form.success": "Thank you! Your message has been sent successfully.",
+      "form.consent": "I agree to the <a href='/legal/privacy/'>Privacy Policy</a>.",
 
       "footer.about": "A U.S.-registered nonprofit scientific association dedicated to advancing medical research, education, and professional collaboration worldwide.",
       "footer.quick": "Quick Links",
@@ -144,6 +148,9 @@ window.I18N = (function () {
       "nav.join": "انضم إلينا",
       "a11y.skip": "تخطَّ إلى المحتوى الرئيسي",
       "a11y.top": "العودة إلى الأعلى",
+      "a11y.lang": "تغيير اللغة إلى الإنجليزية",
+      "a11y.menuOpen": "فتح القائمة",
+      "a11y.menuClose": "إغلاق القائمة",
       "about.est": "تأسست 2026 · الولايات المتحدة",
       "bc.home": "الرئيسية",
       "form.name": "الاسم الكامل",
@@ -152,6 +159,7 @@ window.I18N = (function () {
       "form.message": "رسالتك",
       "form.send": "إرسال الرسالة",
       "form.success": "شكراً لك! تم إرسال رسالتك بنجاح.",
+      "form.consent": "أوافق على <a href='/legal/privacy/'>سياسة الخصوصية</a>.",
 
       "footer.about": "جمعية علمية غير ربحية مسجلة في الولايات المتحدة، تُعنى بالارتقاء بالبحث الطبي والتعليم والتعاون المهني حول العالم.",
       "footer.quick": "روابط سريعة",
@@ -231,8 +239,17 @@ window.I18N = (function () {
     }
   };
 
+  // دعم اختيار اللغة عبر ?lang=ar في الرابط (مع الحفظ في localStorage)
   let lang = "en";
-  try { lang = localStorage.getItem("ms_lang") || "en"; } catch (e) {}
+  try {
+    const urlLang = new URLSearchParams(location.search).get("lang");
+    if (urlLang === "ar" || urlLang === "en") {
+      lang = urlLang;
+      localStorage.setItem("ms_lang", lang);
+    } else {
+      lang = localStorage.getItem("ms_lang") || "en";
+    }
+  } catch (e) {}
 
   function d() {
     const page = window.PAGE_I18N || {};
@@ -255,7 +272,15 @@ window.I18N = (function () {
     });
     document.querySelectorAll("[data-lang-btn]").forEach(b => {
       b.textContent = (lang === "en" ? "عربي" : "English");
+      b.setAttribute("aria-label", t["a11y.lang"] || "Toggle language");
     });
+    document.querySelectorAll(".hamburger").forEach(h => {
+      const open = h.getAttribute("aria-expanded") === "true";
+      const label = t[open ? "a11y.menuClose" : "a11y.menuOpen"];
+      if (label) h.setAttribute("aria-label", label);
+    });
+    const toTop = document.querySelector(".to-top");
+    if (toTop && t["a11y.top"]) toTop.setAttribute("aria-label", t["a11y.top"]);
     document.querySelectorAll("[data-year]").forEach(el => {
       el.textContent = new Date().getFullYear();
     });
@@ -295,5 +320,5 @@ window.I18N = (function () {
   document.addEventListener("site:ready", apply);
   document.addEventListener("DOMContentLoaded", apply);
 
-  return { setLang, toggle, apply, get lang() { return lang; } };
+  return { setLang, toggle, apply, t: key => d()[key], get lang() { return lang; } };
 })();

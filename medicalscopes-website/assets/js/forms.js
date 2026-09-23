@@ -1,26 +1,25 @@
 /* ============================================================
    Association of Medical Scopes — forms.js
-   Centralized form handler: Formspree + mailto fallback.
-   ✏️ To enable Formspree: create a form at formspree.io
-      and paste your endpoint below (e.g. "https://formspree.io/f/abcdwxyz").
+   Centralized form handler:
+   1) Netlify Forms  ← لو الفورم يحمل data-netlify="true" (الأولوية)
+   2) Formspree      ← لو وُضع الـ endpoint أدناه
+   3) mailto fallback ← تلقائياً عند غياب الاثنين
    ============================================================ */
 (function () {
   "use strict";
 
-  const FORMSPREE_ENDPOINT = ""; // ✏️ اتركه فارغاً لاستخدام mailto مؤقتاً
+  const FORMSPREE_ENDPOINT = ""; // ✏️ اتركه فارغاً لاستخدام Netlify أو mailto
   const CONTACT_EMAIL = "info@medicalscopes.org";
   const THANK_YOU_URL = "/thank-you/";
 
   const MESSAGES = {
     en: {
       sending: "Sending…",
-      success: "Thank you! Your message has been sent successfully.",
       mailto: "Your email app is opening with the completed message. Please send it to finish.",
       error: "Something went wrong. Please try again or email us directly at " + CONTACT_EMAIL + "."
     },
     ar: {
       sending: "جارٍ الإرسال…",
-      success: "شكراً لك! تم إرسال رسالتك بنجاح.",
       mailto: "سيتم فتح تطبيق البريد الإلكتروني بالرسالة الجاهزة. اضغط إرسال لإكمال الطلب.",
       error: "حدث خطأ ما. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على " + CONTACT_EMAIL + "."
     }
@@ -40,44 +39,72 @@
     box.textContent = text;
   }
 
+  function setLoading(btn, loading, text) {
+    if (!btn) return;
+    btn.disabled = loading;
+    if (text != null) btn.textContent = text;
+  }
+
+  // Netlify يتطلب حقل form-name مخفي ضمن بيانات الإرسال
+  function ensureNetlifyFields(form) {
+    if (!form.querySelector('input[name="form-name"]')) {
+      const h = document.createElement("input");
+      h.type = "hidden";
+      h.name = "form-name";
+      h.value = form.getAttribute("name") || "contact";
+      form.appendChild(h);
+    }
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
     const btn = form.querySelector('button[type="submit"]');
     const originalText = btn ? btn.textContent : "";
     const M = MESSAGES[lang()] || MESSAGES.en;
-    if (btn) { btn.disabled = true; btn.textContent = M.sending; }
-
     const data = new FormData(form);
 
-    if (FORMSPREE_ENDPOINT && FORMSPREE_ENDPOINT.indexOf("http") === 0) {
+    // Honeypot — تجاهل صامت للبوتات
+    if (data.get("bot-field")) { form.reset(); return; }
+
+    setLoading(btn, true, M.sending);
+    const fail = () => { showMsg(form, "error", M.error); setLoading(btn, false, originalText); };
+
+    if (form.hasAttribute("data-netlify")) {
+      // Netlify Forms (AJAX)
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(data).toString()
+      })
+      .then(r => { if (!r.ok) throw new Error("Network"); window.location.href = THANK_YOU_URL; })
+      .catch(fail);
+    } else if (FORMSPREE_ENDPOINT && FORMSPREE_ENDPOINT.indexOf("http") === 0) {
+      // Formspree
       fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         body: data,
         headers: { "Accept": "application/json" }
       })
-      .then(r => { if (r.ok) return r.json(); throw new Error("Network"); })
-      .then(() => { window.location.href = THANK_YOU_URL; })
-      .catch(() => {
-        showMsg(form, "error", M.error);
-        if (btn) { btn.disabled = false; btn.textContent = originalText; }
-      });
+      .then(r => { if (!r.ok) throw new Error("Network"); window.location.href = THANK_YOU_URL; })
+      .catch(fail);
     } else {
-      // mailto fallback
+      // mailto fallback — رسالة محايدة بدون ادعاء نجاح الإرسال
       let body = "";
-      data.forEach((v, k) => { body += k + ": " + v + "\n"; });
+      data.forEach((v, k) => { if (k !== "bot-field") body += k + ": " + v + "\n"; });
       const subject = encodeURIComponent("[AMS] " + (data.get("subject") || form.dataset.subject || "New submission"));
-      showMsg(form, "success", M.mailto);
+      showMsg(form, "info", M.mailto);
       window.setTimeout(() => {
         window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + encodeURIComponent(body);
       }, 120);
       setTimeout(() => form.reset(), 700);
-      if (btn) { btn.disabled = false; btn.textContent = originalText; }
+      setLoading(btn, false, originalText);
     }
   }
 
   function init() {
     document.querySelectorAll("form.ams-form").forEach(f => {
+      if (f.hasAttribute("data-netlify")) ensureNetlifyFields(f);
       if (f.dataset.bound) return;
       f.dataset.bound = "1";
       f.addEventListener("submit", handleSubmit);

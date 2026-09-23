@@ -48,6 +48,11 @@
       }
     };
   </script>
+<meta property="og:image" content="https://medicalscopes.org/assets/img/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
   <div id="site-header"></div>
@@ -62,8 +67,11 @@
 
     <section class="container" style="padding:80px 0;max-width:700px">
       <div style="background:#fff;border:1px solid var(--line);border-radius:20px;padding:3rem;box-shadow:var(--shadow)">
-        <form id="joinForm" class="ams-form" data-subject="Membership application">
+        <form class="ams-form" name="membership" method="POST" data-netlify="true" netlify-honeypot="bot-field">
           
+          <!-- فخ البوتات -->
+          <p hidden><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
           <div id="successMsg" style="display:none;background:#e4f5f3;border:1px solid var(--accent);color:var(--accent-dark);padding:1.2rem;border-radius:12px;margin-bottom:2rem;font-weight:600" data-i18n="f.success">
             Thank you! Your application has been received successfully...
           </div>
@@ -101,6 +109,14 @@
           <div style="margin-bottom:2rem">
             <label style="display:block;font-weight:700;margin-bottom:.5rem;color:var(--primary-dark)" data-i18n="f.bio">Short Bio / Research Interests</label>
             <textarea name="bio" rows="4" style="width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:1rem"></textarea>
+          </div>
+
+          <!-- موافقة الخصوصية -->
+          <div class="form-group form-check" style="margin-bottom:1.5rem">
+            <label class="check-label">
+              <input type="checkbox" name="privacy_consent" value="accepted" required>
+              <span data-i18n="form.consent">I agree to the <a href="/legal/privacy/">Privacy Policy</a>.</span>
+            </label>
           </div>
 
           <button type="submit" class="btn btn-accent" style="width:100%;justify-content:center" data-i18n="f.submit">Submit Application</button>
